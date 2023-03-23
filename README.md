@@ -152,7 +152,7 @@ A loja virtual Bem Me Care oferecerá produtos de higiene íntima de qualidade a
       <a href="https://github.com/jennifer-cruz">
         <img src="https://user-images.githubusercontent.com/91226847/227216220-8761c94f-a161-467d-95c1-0942db54966f.jpeg" width="100px;" alt="Foto da Jennifer no GitHub"/><br>
         <sub>
-          <b>Thayane Almeida</b>
+          <b>Jennifer Cruz</b>
         </sub>
       </a>
     </td>
