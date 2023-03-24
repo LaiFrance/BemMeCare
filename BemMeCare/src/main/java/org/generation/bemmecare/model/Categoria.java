@@ -1,9 +1,18 @@
 package org.generation.bemmecare.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -22,7 +31,11 @@ public class Categoria {
 
 	@NotNull(message = "É obrigatório selecionar o fluxo!")
 	private String fluxo;
-
+	
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("categoria")
+    private List<Produtos> produtos;
+	
 	public Long getId() {
 		return id;
 	}
@@ -53,6 +66,14 @@ public class Categoria {
 
 	public void setFluxo(String fluxo) {
 		this.fluxo = fluxo;
+	}
+
+	public List<Produtos> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produtos> produtos) {
+		this.produtos = produtos;
 	}
 
 }

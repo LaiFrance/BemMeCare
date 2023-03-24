@@ -6,10 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_produtos")
@@ -22,7 +25,6 @@ public class Produtos {
 	@NotBlank(message = "O atributo nome é Obrigatório")
 	private String nome;
 
-	@NotBlank(message = "O atributo preço é Obrigatório")
 	private float preco;
 
 	private String img;
@@ -32,6 +34,14 @@ public class Produtos {
 	@UpdateTimestamp
 	private LocalDateTime data;
 
+	@ManyToOne
+    @JsonIgnoreProperties("produtos")
+    private Categoria categoria;
+	
+	@ManyToOne
+    @JsonIgnoreProperties("produtos")
+    private Usuario usuario;
+	
 	public Long getId() {
 		return id;
 	}
@@ -80,7 +90,20 @@ public class Produtos {
 		this.data = data;
 	}
 
-	
-	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 }
